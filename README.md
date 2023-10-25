@@ -126,14 +126,7 @@ http://127.0.0.1:8000/admin/
 - логин: test1@mail.com
 - пароль: test1-test1
 
-- логин: test2@mail.com
-- пароль: test2-test2
-
-- логин: test3@mail.com
-- пароль: test3-test3
-
-- логин: test4@mail.com
-- пароль: test4-test4
+и т.п.
 
 - логин: test5@mail.com
 - пароль: test5-test5
