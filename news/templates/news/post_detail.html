@@ -1,0 +1,40 @@
+<!--  по заданию наследуемся от шаблона default.html -->
+{% extends 'layout/default.html' %}
+{% load custom_filters %} <!-- не забываем заранее загружать наши фильтры! -->
+
+<!-- Заголовок страницы -->
+{% block title %}
+NewsPaper - {{ post.postTitle }}
+{% endblock title %}
+
+<!-- В контенте на странице мы выводим сам пост, первичный ключ которого был передан в адрес -->
+{% block content %}
+
+</br>
+<div class="card">
+    <div class="card-header">
+        </br>
+        <h3>
+            {{ post.postTitle|Censor }}
+        </h3>
+        <div>
+            Тип поста: <span class="badge bg-info">{{ post.get_post_type_display }}</span>
+            Категории:
+            <span class="badge bg-info">
+            {% for category in post.postCats.all %}
+                {{ category.categoryName }};
+            {% endfor %}
+            </span>
+            </br>
+            Дата публикации: <span class="badge bg-info">{{ post.postCreated|date:'d M Y, h ч m мин' }}</span>
+            Автор: <span class="badge bg-info">{{ post.postAuthor.authorUser.username }}</span>
+            Рейтинг поста: <span class="badge bg-info">{{ post.postRating }}</span>
+        </div>
+    </div>
+    <div class="card-body">
+            {{ post.postText|Censor|safe }}
+    </div>
+</div>
+</br>
+
+{% endblock content %}
